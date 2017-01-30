@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+<?php if (isset($error)) : ?>
+    <p><?php echo $error ?></p>
+<?php endif; ?>
+
+<form action="?action=add" method="POST">
+    <label for="task">Nom de la tâche : </label><input type="text" name="task" id="task">
+    <input type="submit">
+</form>
+</body>
+</html>
