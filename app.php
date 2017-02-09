@@ -7,6 +7,7 @@ require_once "vendor/autoload.php";
 $controller = new ListController();
 
 parse_str($_SERVER['QUERY_STRING'], $action);
+ob_start('ob_gzhandler');
 
 switch ($action['action']) {
     case 'list':
@@ -15,8 +16,11 @@ switch ($action['action']) {
     case 'add':
         $controller->add();
         break;
+    case 'remove':
+        $controller->delete();
+        break;
     default:
         $controller->noResourceFound();
         break;
 }
-
+ob_end_flush();

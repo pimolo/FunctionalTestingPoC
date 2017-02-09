@@ -16,8 +16,8 @@ class ListController extends Controller
     public function index()
     {
         $tasks = $this->taskModel->getTasks();
-
-        $this->render('list.html', ['tasks' => $tasks]);
+//var_dump($tasks);exit;
+        $this->render('list.php', ['tasks' => $tasks]);
     }
 
     public function add()
@@ -34,6 +34,13 @@ class ListController extends Controller
         } else {
             $this->render('add_form.html');
         }
+    }
+
+    public function delete()
+    {
+        $taskId = $_GET['taskId'];
+        $this->taskModel->deleteTask($taskId);
+        header('Location: /?action=list');
     }
 
     public function noResourceFound()

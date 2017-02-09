@@ -15,7 +15,8 @@ class TaskModel
 
     public function getTasks()
     {
-        $tasks = $this->connection->query('SELECT * FROM tasks', \PDO::FETCH_ASSOC);
+        $query = $this->connection->query('SELECT * FROM tasks', \PDO::FETCH_ASSOC);
+        $tasks = $query->fetchAll();
 
         return $tasks;
     }
@@ -23,13 +24,13 @@ class TaskModel
     public function insertTask($taskName)
     {
 
-        $insert = $this->connection->prepare('INSERT INTO TASKS (name) VALUES (:task)');
-        $insert->execute([':task' => (string) $taskName]);
+        $query = $this->connection->prepare('INSERT INTO tasks (name) VALUES (:task)');
+        $query->execute([':task' => (string) $taskName]);
     }
 
-    public function deleteTask($taskName)
+    public function deleteTask($taskId)
     {
-        $insert = $this->connection->prepare('DELETE FROM TASKS WHERE name=$taskName');
-        $insert->execute([':task' => (string) $taskName]);
+        $query = $this->connection->prepare('DELETE FROM tasks WHERE id=:taskId');
+        $query->execute([':taskId' => $taskId]);
     }
 }
