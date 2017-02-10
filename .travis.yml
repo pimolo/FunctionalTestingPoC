@@ -10,4 +10,5 @@ install:
 script:
   - nohup php -S localhost:8000 app.php 2>&1 &
   - ./vendor/bin/behat
+  - cat nohup.out
 
