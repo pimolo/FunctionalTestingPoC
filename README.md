@@ -1,5 +1,7 @@
 # PHP todolist
 
+[![Build Status](https://travis-ci.org/pimolo/FunctionalTestingPoC.svg?branch=master)](https://travis-ci.org/pimolo/FunctionalTestingPoC)
+
 ## Requirements
 ```sh
 sudo apt-get install php-sqlite3
