@@ -8,7 +8,7 @@ class TaskModel
 
     public function __construct()
     {
-        $this->connection = new \PDO('sqlite:' . dirname(__FILE__, 3) . DIRECTORY_SEPARATOR . 'db.sqlite');
+        $this->connection = new \PDO('sqlite:' . dirname(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR . 'db.sqlite');
         $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->connection->exec('CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(255) NOT NULL)');
     }
